@@ -4,5 +4,5 @@ A site to find movies to watch. Uses TMDb API for displaying movies, also with f
 
 # Screenshots
 ![Screenshot 1](https://tobiaswilhelmsson.se/filmsidan/screens/screen1.png)
-![Screenshot 2](https://tobiaswilhelmsson.se/filmsidan/screens/screen2.png)
+![Screenshot 2](https://tobiaswilhelmsson.se/filmsidan/screens/screen2v2.png)
 ![Screenshot 3](https://tobiaswilhelmsson.se/filmsidan/screens/screen3.png)
