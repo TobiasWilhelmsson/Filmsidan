@@ -1,0 +1,444 @@
+/*
+1. Global styling
+2. Navbar
+3. Hero
+4. Lila knappar
+5. Filmboxar
+6. Betyg dropdown i filmboxar
+7. Modal
+8. Filter knappar
+8. Footer
+9. Media queries och keyframes
+*/
+
+/* 1. Global styling  */
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+html body {
+    font-family: 'Ubuntu', sans-serif;
+    background: #192226;
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+    min-height: 100vh;
+}
+
+/* 2. Navbar  */
+
+.navbar {
+    z-index: 99;
+    background: #222b31 !important;
+    border-bottom: 4px solid #852d91 !important;
+    box-shadow: 0 1px 56px -2px #000000;
+}
+
+.navbar-brand {
+    font-size: 20px;
+    color: #fff !important;
+    letter-spacing: 3px;
+}
+
+/*navbar links */
+.nav-link {
+    letter-spacing: 3px;
+    padding: 16px !important;
+    color: #c4dee5 !important;
+    text-transform: uppercase;
+    position: relative;
+    font-size: 12px;
+    z-index: 1000;
+}
+
+.active {
+    background: linear-gradient(135deg, #852d91, #312a6c);
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    color: white;
+}
+
+/* beautiful hover effect on large screens  */
+@media only screen and (min-width: 768px) {
+    .nav-link:hover {
+        background: linear-gradient(135deg, #852d91, #312a6c);
+        border-radius: 5px;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+/* beautiful dropdown menu that fits the design */
+.dropdown-menu {
+    background: linear-gradient(135deg, #852d91, #312a6c);
+    border: none;
+}
+
+.dropdown-item {
+    letter-spacing: 3px;
+    padding: 16px !important;
+    color: #c4dee5 !important;
+    text-transform: uppercase;
+    position: relative;
+    font-size: 12px;
+}
+
+.dropdown-item:hover {
+    background-color: #450a4d;
+    border-radius: 1px;
+    box-shadow: inset 0px 0px 8px rgba(0, 0, 0, 0.3);
+}
+
+nav a:hover {
+    color: #fff !important;
+}
+
+.navbar .nav-item.dropdown:hover .dropdown-menu {
+    margin-top: 2px;
+    display: block;
+}
+
+.navbar .nav-item.dropdown:hover .dropdown-menu:hover {
+    display: block;
+}
+
+/* 3. Hero  */
+
+.hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0)),
+        url('images/start.png');
+    height: 100vh;
+    background-size: cover;
+}
+
+.herocontent {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    width: 1000px;
+}
+
+.herocontent h1 {
+    font-family: 'Comfortaa' !important;
+    font-size: 4.7rem;
+    font-weight: 800;
+}
+
+.herocontent p {
+    font-size: 1.6rem;
+    font-weight: 300;
+}
+
+/* 4. Lila knappar */
+.purpleBtn {
+    overflow: hidden;
+    position: relative;
+    font-family: Comfortaa;
+    margin: 10px;
+    color: #fff;
+    background: linear-gradient(135deg, #852d91, #312a6c);
+    font-size: 22px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0px 0px 46px 0px #6f157bfc;
+    transition: transform 0.3s ease;
+}
+.purpleBtn:hover {
+    color: #fff;
+    border: none;
+    transform: scale(1.13);
+}
+
+.smallBtn {
+    margin: 5px;
+    color: #d0dce8;
+    font-size: 16px;
+    padding: 8px 15px;
+    box-shadow: 0px 0px 24px 0px #310936c3;
+}
+
+@media only screen and (max-width: 768px) {
+    .herocontent h1 {
+        font-size: 2.8rem;
+    }
+
+    .herocontent p {
+        font-size: 1.1rem;
+    }
+
+    .herocontent {
+        width: auto;
+    }
+
+    .pinkBtn {
+        margin-bottom: 20px;
+    }
+}
+
+/* 5. Filmboxar */
+.itemCard {
+    margin-bottom: 50px;
+}
+
+.box {
+    font-family: 'Comfortaa', sans-serif;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 5px 25px -5px #000000, 0 8px 20px -6px #000;
+}
+
+/* lila box i boxen, cool transition effect, innan den "landar" */
+.box:before {
+    content: '';
+    background: #852d91b0;
+    height: 0;
+    border-radius: 0 0 100% 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    transition: all 0.4s ease-in-out;
+    box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.4);
+}
+
+/* lila box när den landat */
+.box:hover:before {
+    height: 100%;
+    border-radius: 10px;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+}
+
+.box img {
+    width: 100%;
+    height: auto;
+    transition: all 0.3s ease 0s;
+}
+
+.box:hover img {
+    filter: blur(3px);
+}
+
+.box-content {
+    color: #fff;
+    width: 100%;
+    padding: 0 15px;
+    opacity: 0;
+    transform: translateX(-50%) translateY(-50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    transition: all 0.4s ease 0.1s;
+}
+
+.box:hover .box-content {
+    opacity: 1;
+}
+
+.box .title {
+    font-size: 13px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+    margin: 0 0 3px;
+}
+
+.box .description {
+    font-size: 12px;
+    font-weight: 100;
+    letter-spacing: 0.5px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+    display: block;
+    margin: 0 0 12px;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+@media only screen and (max-width: 575px) {
+    .box .title {
+        font-size: 22px;
+    }
+
+    .box .description {
+        font-size: 19px;
+    }
+}
+
+.boxLinks {
+    text-decoration: none;
+    margin-left: 25%;
+    margin-top: 10px;
+    color: #fff;
+    display: block;
+    font-size: 11px;
+    max-width: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    transition: all 0.35s ease 0s;
+}
+
+.boxLinks:hover {
+    color: purple;
+    background-color: white;
+}
+
+/* 6. Betyg dropdown i filmboxar */
+.dropdownBtn {
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 11px;
+    text-decoration: none;
+    position: relative;
+}
+@media only screen and (max-width: 768px) {
+    .boxLinks {
+        font-size: 15px;
+    }
+
+    .dropdownBtn {
+        font-size: 15px;
+    }
+}
+
+/* Styla dropdown-innehållet (göm det som standard) */
+.dropdownContent {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    max-width: 50%;
+    margin-left: 25%;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.dropdownContent a {
+    font-family: 'Ubuntu', sans-serif;
+    display: block;
+    text-decoration: none;
+    color: #7e2b88;
+    padding: 1px 15px;
+}
+
+.dropdownContent a:hover {
+    background-color: #ddd;
+}
+
+/* 7. Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 99999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #192226ab;
+    transition: all 0.35s ease 0s;
+}
+
+.modal-content {
+    margin: 15% auto;
+    padding: 20px;
+    width: 40%;
+    text-align: center;
+    background-color: #222b31;
+}
+
+@media only screen and (max-width: 768px) {
+    .modal-content {
+        width: 85%;
+    }
+}
+
+.modal h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.modal img {
+    max-width: 100%;
+    margin: 10px 0;
+}
+
+.modal p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.modal a {
+    text-decoration: none;
+    margin-top: 10px;
+    color: purple;
+    color: #fff;
+    display: block;
+    font-size: 17px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.modal a:hover {
+    color: black;
+    background-color: white;
+}
+
+/* 8. Filter knappar */
+.btn-secondary {
+    margin: 5px;
+    font-family: Comfortaa;
+    text-transform: lowercase;
+}
+
+/* 9. Footer */
+footer {
+    background: #222b31 !important;
+    color: #c4dee5;
+    text-align: center;
+    padding: 12px 0;
+    border-top: 3px solid #852d91;
+    box-shadow: 0 -3px 11px 0px rgba(0, 0, 0, 0.5);
+}
+
+footer p {
+    margin: 0;
+    font-size: 12px;
+    letter-spacing: 1px;
+    opacity: 0.7;
+}
+
+/* 10. Media queries och keyframes */
+
+@media only screen and (max-width: 768px) {
+    footer p {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width: 990px) {
+    .box {
+        margin: 0 0 30px;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .itemCard {
+        max-width: 280px;
+    }
+}
